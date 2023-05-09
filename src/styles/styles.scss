@@ -1,0 +1,16 @@
+.obr label::after {
+  content: '*',
+}
+
+.click {
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.click:hover {
+  opacity: 1;
+}
+
+.v-input--selection-controls {
+  margin-top: 0px;
+}

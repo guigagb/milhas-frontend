@@ -1,0 +1,36 @@
+@import '@/plugins/vuetify/default-preset/preset/variables.scss';
+
+// Write your variable overrides
+:root{
+  --space-xxs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space: 1rem;
+  --space-lg: 1.25rem;
+  --space-xxl: 1.5rem;
+}
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #9155fd #aba0a7;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #aba0a7;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #9155fd;
+    border-radius: 10px;
+    border: 3px solid #9155fd;
+  }
+
+  ::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
