@@ -7,7 +7,7 @@ const axios = Axios.create({
   baseURL: process.env.VUE_APP_URL_SERVER || "http://192.168.100.200:1421/",
 });
 
-axios.defaults.headers.common['Origin'] = 'https://milhas-frontend.vercel.app/';
+axios.defaults.headers.common['Origin'] = 'https://milhas-frontend.vercel.app';
 
 Vue.use({
   install(Vue) {
