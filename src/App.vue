@@ -21,7 +21,7 @@ export default {
   },
   name: "App",
   created() {
-    document.title = "Carteira de Milhas";
+    document.title = "Ponto Milhas";
   },
   computed: {
     ...mapState("tabs", ["tabsName", "pageActive"]),
