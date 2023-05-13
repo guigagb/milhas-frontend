@@ -22,30 +22,14 @@
         <!-- login form -->
         <v-card-text>
           <v-form id="formLogin">
-            <v-text-field
-              v-model="email"
-              outlined
-              label="Email"
-              placeholder="john@example.com"
-              hide-details
-              class="mb-3 obr"
-              ref="edtEmail"
-              maxlength="150"
-            ></v-text-field>
+            <v-text-field v-model="email" outlined label="Email" placeholder="john@example.com" hide-details
+              class="mb-3 obr" ref="edtEmail" maxlength="150"></v-text-field>
 
-            <v-text-field
-              v-model="senha"
-              outlined
-              label="Senha"
-              placeholder="············"
-              hide-details
-              class="obr"
-              maxlength="10"
-              :type="isPasswordVisible ? 'text' : 'password'"
+            <v-text-field v-model="senha" outlined label="Senha" placeholder="············" hide-details class="obr"
+              maxlength="10" :type="isPasswordVisible ? 'text' : 'password'"
               :append-icon="isPasswordVisible ? icons.mdiEyeOffOutline : icons.mdiEyeOutline"
               @click:append="isPasswordVisible = !isPasswordVisible"
-              @keypress.enter.prevent="onClickLogin"
-            ></v-text-field>
+              @keypress.enter.prevent="onClickLogin"></v-text-field>
 
             <div class="d-flex align-center justify-end flex-wrap">
               <!-- forgot link -->
@@ -59,18 +43,16 @@
         <!-- create new account  -->
         <v-card-text class="d-flex align-center justify-center flex-wrap mt-2">
           <span class="me-2">Ainda não tem cadastro?</span>
-          <router-link :to="{name:'pages-register'}">Faça sua assinatura</router-link>
+          <a
+            href="https://api.whatsapp.com/send?phone=5561983090055&text=Ol%C3%A1%2C%20desejo%20saber%20mais%20sobre%20o%20sistema%20ponto%20milhas.">Faça
+            sua assinatura</a>
         </v-card-text>
       </v-card>
     </div>
 
     <!-- background triangle shape  -->
-    <img
-      class="auth-mask-bg"
-      height="173"
-      :src="require(`@/assets/images/misc/mask-${$vuetify.theme.dark ? 'dark':'light'}.png`)"
-      alt="borda do rodapé"
-    />
+    <img class="auth-mask-bg" height="173"
+      :src="require(`@/assets/images/misc/mask-${$vuetify.theme.dark ? 'dark' : 'light'}.png`)" alt="borda do rodapé" />
 
     <!-- tree -->
     <v-img class="auth-tree" width="247" height="185" src="@/assets/images/misc/tree.png"></v-img>
