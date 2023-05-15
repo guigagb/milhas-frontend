@@ -51,6 +51,5 @@ export default {
   },
   limparCache(state) {
     state.caches = [];
-    console.log(state.caches);
   }
 };

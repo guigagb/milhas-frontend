@@ -7,8 +7,9 @@
           @change="calcularPontosDisponiveis()"></v-text-field>
       </v-col>
       <v-col md="5" cols="12">
-        <v-autocomplete :items="origens" v-model="id_origem_parceiro_ou_cartao" item-text="nome" item-value="id_origem_parceiro_ou_cartao" label="Origem" dense
-          outlined hide-details class="obr" @change="calcularPontosDisponiveis"></v-autocomplete>
+        <v-autocomplete :items="origens" v-model="id_origem_parceiro_ou_cartao" item-text="nome"
+          item-value="id_origem_parceiro_ou_cartao" label="Origem" dense outlined hide-details class="obr"
+          @change="calcularPontosDisponiveis"></v-autocomplete>
       </v-col>
       <v-col md="5" cols="12">
         <v-autocomplete :items="destinos" v-model="form.id_parceiro_destino" item-text="nome" item-value="id_parceiro"
@@ -127,17 +128,16 @@ export default {
     pontosDisponiveis() {
       if (this.listaPontosDisponiveis.lista.length === 0) return 0;
 
-      console.log(this.listaPontosDisponiveis.lista);
-
       const localizado = this.listaPontosDisponiveis.lista.find((parceiroOuCartao) => {
-        if (`parceiro_${parceiroOuCartao.id}` === this.id_origem_parceiro_ou_cartao || `cartao_${parceiroOuCartao.id}` === this.id_origem_parceiro_ou_cartao) {
+        if (`parceiro_${parceiroOuCartao.id}` === this.id_origem_parceiro_ou_cartao && parceiroOuCartao.is_cartao === 'N') {
           return true;
         }
-
-        return false;
+        else if (`cartao_${parceiroOuCartao.id}` === this.id_origem_parceiro_ou_cartao && parceiroOuCartao.is_cartao === 'S') {
+          return true;
+        } else {
+          return false;
+        }
       });
-
-      console.log('localizado',localizado);
 
       return localizado.pontos_disponiveis || 0;
     },
@@ -147,7 +147,7 @@ export default {
     async calcularPontosDisponiveis() {
       if (!validarData(this.form.data)) return;
 
-      if (!this.id_origem_parceiro_ou_cartao) return;
+      if (this.id_origem_parceiro_ou_cartao === undefined) return;
 
       if (this.listaPontosDisponiveis.lista.length > 0 && this.listaPontosDisponiveis.data === this.form.data) return;
 
@@ -181,7 +181,7 @@ export default {
 
       const cartoesMap = cartoes.map((cartao) => {
         const resultado = {
-          id_origem_parceiro_ou_cartao: `cartao_${parceiro.id_parceiro}`,
+          id_origem_parceiro_ou_cartao: `cartao_${cartao.id_cartao}`,
           id_origem: cartao.id_cartao,
           nome: cartao.nome,
           is_cartao: true,

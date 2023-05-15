@@ -59,7 +59,6 @@ export default {
 
   methods: {
     expirado(data) {
-      console.log(data);
       return moment(data).isBefore(moment());
     }
   }
