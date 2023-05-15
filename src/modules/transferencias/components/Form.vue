@@ -127,6 +127,8 @@ export default {
     pontosDisponiveis() {
       if (this.listaPontosDisponiveis.lista.length === 0) return 0;
 
+      console.log(this.listaPontosDisponiveis.lista);
+
       const localizado = this.listaPontosDisponiveis.lista.find((parceiroOuCartao) => {
         if (parceiroOuCartao.id === this.id_origem && parceiroOuCartao.is_cartao === this.origem.is_cartao) {
           return true;
@@ -138,6 +140,8 @@ export default {
 
         return false;
       });
+
+      console.log('localizado',localizado);
 
       return localizado.pontos_disponiveis || 0;
     },
