@@ -7,8 +7,6 @@ const axios = Axios.create({
   baseURL: process.env.VUE_APP_URL_SERVER || "http://192.168.100.200:1421/",
 });
 
-axios.defaults.headers.common['Origin'] = 'https://app.pontomilhas.com.br';
-
 Vue.use({
   install(Vue) {
     Vue.prototype.axios = axios;
