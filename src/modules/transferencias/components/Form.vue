@@ -7,7 +7,7 @@
           @change="calcularPontosDisponiveis()"></v-text-field>
       </v-col>
       <v-col md="5" cols="12">
-        <v-autocomplete :items="origens" v-model="id_origem" item-text="nome" item-value="id_origem" label="Origem" dense
+        <v-autocomplete :items="origens" v-model="id_origem_parceiro_ou_cartao" item-text="nome" item-value="id_origem_parceiro_ou_cartao" label="Origem" dense
           outlined hide-details class="obr" @change="calcularPontosDisponiveis"></v-autocomplete>
       </v-col>
       <v-col md="5" cols="12">
@@ -82,7 +82,7 @@ export default {
       },
       origens: [],
       destinos: [],
-      id_origem: undefined,
+      id_origem_parceiro_ou_cartao: undefined,
       listaPontosDisponiveis: {
         data: "",
         lista: [],
@@ -117,7 +117,7 @@ export default {
     },
 
     origem() {
-      return this.origens.find((origem) => origem.id_origem === this.id_origem);
+      return this.origens.find((origem) => origem.id_origem_parceiro_ou_cartao === this.id_origem_parceiro_ou_cartao);
     },
 
     destino() {
@@ -130,11 +130,7 @@ export default {
       console.log(this.listaPontosDisponiveis.lista);
 
       const localizado = this.listaPontosDisponiveis.lista.find((parceiroOuCartao) => {
-        if (parceiroOuCartao.id === this.id_origem && parceiroOuCartao.is_cartao === this.origem.is_cartao) {
-          return true;
-        }
-
-        if (parceiroOuCartao.id === this.id_origem && parceiroOuCartao.is_cartao !== this.origem.is_cartao) {
+        if (`parceiro_${parceiroOuCartao.id}` === this.id_origem_parceiro_ou_cartao || `cartao_${parceiroOuCartao.id}` === this.id_origem_parceiro_ou_cartao) {
           return true;
         }
 
@@ -151,7 +147,7 @@ export default {
     async calcularPontosDisponiveis() {
       if (!validarData(this.form.data)) return;
 
-      if (!this.id_origem) return;
+      if (!this.id_origem_parceiro_ou_cartao) return;
 
       if (this.listaPontosDisponiveis.lista.length > 0 && this.listaPontosDisponiveis.data === this.form.data) return;
 
@@ -173,6 +169,7 @@ export default {
         .filter((parceiro) => parceiro.is_cia_aerea === "N")
         .map((parceiro) => {
           const resultado = {
+            id_origem_parceiro_ou_cartao: `parceiro_${parceiro.id_parceiro}`,
             id_origem: parceiro.id_parceiro,
             nome: parceiro.nome,
             is_cartao: false,
@@ -184,6 +181,7 @@ export default {
 
       const cartoesMap = cartoes.map((cartao) => {
         const resultado = {
+          id_origem_parceiro_ou_cartao: `cartao_${parceiro.id_parceiro}`,
           id_origem: cartao.id_cartao,
           nome: cartao.nome,
           is_cartao: true,
