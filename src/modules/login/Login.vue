@@ -3,40 +3,51 @@
     <div class="auth-inner">
       <v-card class="auth-card">
         <!-- logo -->
-        <v-card-title class="d-flex align-center justify-center py-7">
-          <!-- <v-img
-            :src="require('@/assets/prootica.png')"
-            max-height="32px"
-            max-width="200px"
-            alt="logo"
-            contain
-            class="me-3"
-          ></v-img>-->
-        </v-card-title>
-
-        <!-- title -->
-        <v-card-text>
-          <p class="text-2xl font-weight-semibold light-text--primary mb-2">Seja bem vindo! 👋🏻</p>
-        </v-card-text>
+        <span class="auth-card__title">.milhas</span>
 
         <!-- login form -->
         <v-card-text>
           <v-form id="formLogin">
-            <v-text-field v-model="email" outlined label="Email" placeholder="john@example.com" hide-details
-              class="mb-3 obr" ref="edtEmail" maxlength="150"></v-text-field>
+            <v-text-field
+              v-model="email"
+              outlined
+              label="Email"
+              placeholder="john@example.com"
+              hide-details
+              class="mb-3 obr"
+              ref="edtEmail"
+              maxlength="150"
+            ></v-text-field>
 
-            <v-text-field v-model="senha" outlined label="Senha" placeholder="············" hide-details class="obr"
-              maxlength="10" :type="isPasswordVisible ? 'text' : 'password'"
+            <v-text-field
+              v-model="senha"
+              outlined
+              label="Senha"
+              placeholder="············"
+              hide-details
+              class="obr"
+              maxlength="10"
+              :type="isPasswordVisible ? 'text' : 'password'"
               :append-icon="isPasswordVisible ? icons.mdiEyeOffOutline : icons.mdiEyeOutline"
               @click:append="isPasswordVisible = !isPasswordVisible"
-              @keypress.enter.prevent="onClickLogin"></v-text-field>
+              @keypress.enter.prevent="onClickLogin"
+            ></v-text-field>
 
             <div class="d-flex align-center justify-end flex-wrap">
               <!-- forgot link -->
-              <a href="javascript:void(0)" class="mt-1">Esqueceu sua senha?</a>
+              <a
+                href="javascript:void(0)"
+                class="mt-1"
+              >Esqueceu sua senha?</a>
             </div>
 
-            <v-btn :loading="loading" block color="primary" class="mt-6" @click="onClickLogin">Login</v-btn>
+            <v-btn
+              :loading="loading"
+              block
+              color="primary"
+              class="mt-6"
+              @click="onClickLogin"
+            >Login</v-btn>
           </v-form>
         </v-card-text>
 
@@ -50,15 +61,7 @@
       </v-card>
     </div>
 
-    <!-- background triangle shape  -->
-    <img class="auth-mask-bg" height="173"
-      :src="require(`@/assets/images/misc/mask-${$vuetify.theme.dark ? 'dark' : 'light'}.png`)" alt="borda do rodapé" />
 
-    <!-- tree -->
-    <v-img class="auth-tree" width="247" height="185" src="@/assets/images/misc/tree.png"></v-img>
-
-    <!-- tree  -->
-    <v-img class="auth-tree-3" width="377" height="289" src="@/assets/images/misc/tree-3.png"></v-img>
   </div>
 </template>
 
@@ -143,6 +146,19 @@ export default {
 };
 </script>
 
-<style lang="scss">
-@import "~@/plugins/vuetify/default-preset/preset/pages/auth.scss";
-</style>
+<style lang="scss">@import "~@/plugins/vuetify/default-preset/preset/pages/auth.scss";
+
+@font-face {
+  font-family: 'Baloo';
+  src: url('~@/assets/fonts/Baloo-Regular.ttf');
+}
+
+.auth-card__title {
+  font-family: "Baloo", cursive;
+  margin: 28px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--v-primary-base);
+  font-size: 3rem;
+}</style>

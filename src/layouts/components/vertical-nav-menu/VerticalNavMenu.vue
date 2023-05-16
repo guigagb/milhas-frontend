@@ -9,36 +9,54 @@
     @input="val => $emit('update:is-drawer-open', val)"
   >
     <!-- Navigation Header -->
-    <template v-if="isDrawerOpen" #prepend>
+    <template
+      v-if="isDrawerOpen"
+      #prepend
+    >
       <div class="nav-info-estabelecimento">
-        <!-- <img
-          class="nav-info-estabelecimento__imagem"
-          :src="require('@/assets/inove.jpeg')"
-          alt="logo do estabalecimento"
-        />-->
-        <h5 class="nav-info-estabelecimento__titulo">{{nomeFantasia}}</h5>
+        <h2 class="nav-info-estabelecimento__titulo">.milhas</h2>
       </div>
 
       <div class="pesquisar">
-        <v-icon size="20" class="pesquisar_icone mx-2">mdi mdi-magnify</v-icon>
-        <input v-model="textoPesquisar" class="pesquisar_input" type="text" placeholder="Pesquisar" />
+        <v-icon
+          size="20"
+          class="pesquisar_icone mx-2"
+        >mdi mdi-magnify</v-icon>
+        <input
+          v-model="textoPesquisar"
+          class="pesquisar_input"
+          type="text"
+          placeholder="Pesquisar"
+        />
       </div>
     </template>
-    <template #prepend v-else>
+    <template
+      #prepend
+      v-else
+    >
       <div class="d-flex align-center justify-center mt-4 mb-4">
-        <v-avatar size="40" color="primary">
-          <!-- <v-img
-            class="nav-info-estabelecimento__imagem--small"
-            :src="require('@/assets/inove.jpeg')"
-            alt="logo do estabalecimento"
-          />-->
+        <v-avatar
+          size="40"
+          color="primary"
+        >
+          <img
+            class="logo"
+            src="@/assets/logo-branca.svg"
+          />
         </v-avatar>
       </div>
     </template>
 
     <!-- Navigation Items -->
-    <v-list expand shaped class="vertical-nav-menu-items pr-5">
-      <div v-for="item in filteredMenu" :key="item.nome">
+    <v-list
+      expand
+      shaped
+      class="vertical-nav-menu-items pr-5"
+    >
+      <div
+        v-for="item in filteredMenu"
+        :key="item.nome"
+      >
         <NavMenuSectionTitle
           v-if="item.itens && item.itens.length > 0 && isDrawerOpen == true"
           :title="item.nome"
@@ -49,8 +67,15 @@
           :icon="item.icone"
           :rota="item.rota"
         ></NavMenuLink>
-        <div v-for="subItem in item.itens" :key="subItem.nome">
-          <NavMenuLink :title="subItem.nome" :icon="subItem.icone" :rota="subItem.rota"></NavMenuLink>
+        <div
+          v-for="subItem in item.itens"
+          :key="subItem.nome"
+        >
+          <NavMenuLink
+            :title="subItem.nome"
+            :icon="subItem.icone"
+            :rota="subItem.rota"
+          ></NavMenuLink>
         </div>
       </div>
     </v-list>
@@ -64,7 +89,10 @@
           alt="logo"
           contain
         ></v-img>-->
-        <span v-if="isDrawerOpen" class="caption">versão: 1.0.0.1.0.1</span>
+        <span
+          v-if="isDrawerOpen"
+          class="caption"
+        >versão: 1.0.0.1.0.1</span>
       </div>
     </template>
   </v-navigation-drawer>
@@ -168,6 +196,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@font-face {
+  font-family: 'Baloo';
+  src: url('~@/assets/fonts/Baloo-Regular.ttf');
+}
+
 input {
   border: none;
   background-image: none;
@@ -190,6 +223,7 @@ input {
 // ? Adjust this `translateX` value to keep logo in center when vertical nav menu is collapsed (Value depends on your logo)
 .app-logo {
   transition: all 0.18s ease-in-out;
+
   .v-navigation-drawer--mini-variant & {
     transform: translateX(-4px);
   }
@@ -221,20 +255,20 @@ input {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 8px;
+    padding: 8px 0 0;
     position: relative;
 
-    &__imagem {
-      border: 1px solid var(--v-primary-base);
-      border-radius: 8px;
-      height: 100px;
-      width: 100px;
-    }
-
     &__titulo {
+      font-family: "Baloo", cursive;
       padding-top: var(--space-sm);
-      text-transform: uppercase;
+      color: var(--v-primary-base);
     }
+  }
+
+  .logo {
+    width: 35px;
+    height: 35px;
+    border-radius: 0 !important;
   }
 
   .v-subheader {

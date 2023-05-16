@@ -22,14 +22,17 @@
       bottom: 0;
       width: 100%;
     }
+
     .auth-tree,
     .auth-tree-3 {
       position: absolute;
     }
+
     .auth-tree {
       bottom: 0;
       left: 0;
     }
+
     .auth-tree-3 {
       bottom: 0;
       right: 0;
@@ -39,6 +42,7 @@
     .auth-inner {
       width: 28rem;
       z-index: 1;
+
       .auth-card {
         padding: 0.9375rem 0.875rem;
       }
@@ -47,8 +51,10 @@
 }
 
 @media (max-width: 600px) {
+
   // auth bg and tree hide in sm screen
   .auth-v1 {
+
     .auth-tree,
     .auth-tree-3,
     .auth-mask-bg {
