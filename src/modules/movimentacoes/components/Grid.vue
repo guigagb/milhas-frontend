@@ -27,7 +27,7 @@
       </template>
     </v-data-table>
     <div class="text-center pt-2">
-      <v-pagination :value="page" @input="updatePage" :length="qtdPages"></v-pagination>
+      <v-pagination :value="page" @input="updatePage" :length="qtdPages" :total-visible="7"></v-pagination>
     </div>
   </div>
 </template>
