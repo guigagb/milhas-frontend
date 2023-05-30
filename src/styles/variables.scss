@@ -1,7 +1,7 @@
 @import '@/plugins/vuetify/default-preset/preset/variables.scss';
 
 // Write your variable overrides
-:root{
+:root {
   --space-xxs: 0.25rem;
   --space-sm: 0.5rem;
   --space: 1rem;
@@ -9,28 +9,35 @@
   --space-xxl: 1.5rem;
 }
 
+// medias queries
+
+@custom-media --small screen and (min-width: 576px);
+@custom-media --medium screen and (min-width: 768px);
+@custom-media --large screen and (min-width: 992px);
+@custom-media --extra-large screen and (min-width: 1280px);
+
 /* ===== Scrollbar CSS ===== */
-  /* Firefox */
-  * {
-    scrollbar-width: auto;
-    scrollbar-color: #9155fd #aba0a7;
-  }
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #9155fd #aba0a7;
+}
 
-  /* Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
-    width: 4px;
-  }
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 4px;
+}
 
-  *::-webkit-scrollbar-track {
-    background: #aba0a7;
-  }
+*::-webkit-scrollbar-track {
+  background: #aba0a7;
+}
 
-  *::-webkit-scrollbar-thumb {
-    background-color: #9155fd;
-    border-radius: 10px;
-    border: 3px solid #9155fd;
-  }
+*::-webkit-scrollbar-thumb {
+  background-color: #9155fd;
+  border-radius: 10px;
+  border: 3px solid #9155fd;
+}
 
-  ::-webkit-calendar-picker-indicator {
-    filter: invert(1);
-  }
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}

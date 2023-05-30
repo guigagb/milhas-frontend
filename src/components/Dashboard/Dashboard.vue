@@ -6,37 +6,76 @@
       </v-col>
     </v-row>
     <div class="my-0 py-0 container-progress">
-      <v-progress-linear v-if="loading" class="ma-0" indeterminate></v-progress-linear>
+      <v-progress-linear
+        v-if="loading"
+        class="ma-0"
+        indeterminate
+      ></v-progress-linear>
     </div>
     <v-row class="mt-0">
       <v-col>
-        <CardInfoDuploValor color="#23b7e5" title="Compras Bonificadas" icon="mdi-cart"
-          :valor="comprasBonificadas.creditado | integer" :valor2="comprasBonificadas.naoCreditado | integer"
-          texto1="Creditado" texto2="Não Creditado" />
+        <CardInfoDuploValor
+          color="#23b7e5"
+          title="Compras Bonificadas"
+          icon="mdi-cart"
+          :valor="comprasBonificadas.creditado | integer"
+          :valor2="comprasBonificadas.naoCreditado | integer"
+          texto1="Creditado"
+          texto2="Não Creditado"
+        />
       </v-col>
       <v-col>
-        <CardInfoDuploValor color="#f39c12" title="Transferências" aumento="2" icon="mdi-sync"
-          :valor="transferencias.creditado | integer" :valor2="transferencias.naoCreditado | integer" texto1="Creditado"
-          texto2="Não Creditado" />
+        <CardInfoDuploValor
+          color="#f39c12"
+          title="Transferências"
+          aumento="2"
+          icon="mdi-sync"
+          :valor="transferencias.creditado | integer"
+          :valor2="transferencias.naoCreditado | integer"
+          texto1="Creditado"
+          texto2="Não Creditado"
+        />
       </v-col>
       <v-col>
-        <CardInfoDuploValor color="#2ecc71" title="Vendas" icon="mdi-cash-multiple" :valor="vendas.creditado | money"
-          :valor2="vendas.naoCreditado | money" texto1="Recebido" texto2="Não Recebido" />
+        <CardInfoDuploValor
+          color="#2ecc71"
+          title="Vendas"
+          icon="mdi-cash-multiple"
+          :valor="vendas.creditado | money"
+          :valor2="vendas.naoCreditado | money"
+          texto1="Recebido"
+          texto2="Não Recebido"
+        />
       </v-col>
       <v-col>
-        <CardInfoDuploValor class="primary" title="Lucro Líquido" icon="mdi-cash-check"
-          :valor="lucroLiquido.creditado | money" :valor2="lucroLiquido.naoCreditado | money" texto1="Recebido"
-          texto2="Não Recebido" />
+        <CardInfoDuploValor
+          class="primary"
+          title="Lucro Líquido"
+          icon="mdi-cash-check"
+          :valor="lucroLiquido.creditado | money"
+          :valor2="lucroLiquido.naoCreditado | money"
+          texto1="Recebido"
+          texto2="Não Recebido"
+        />
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols="12" md="4">
+      <v-col
+        cols="12"
+        md="4"
+      >
         <ListaSaldos :items="totaisParceiros" />
       </v-col>
-      <v-col cols="12" md="4">
+      <v-col
+        cols="12"
+        md="4"
+      >
         <ListaVendasPendentes :items="vendasPendentes" />
       </v-col>
-      <v-col cols="12" md="4">
+      <v-col
+        cols="12"
+        md="4"
+      >
         <ListaMovimentacoesPendentes :items="movimentacoesPendentes" />
       </v-col>
     </v-row>

@@ -1,10 +1,23 @@
 <template>
   <div>
     <h2 class="pb-4">Transferências</h2>
-    <v-card elevation="2" class="pa-4">
-      <Grid v-if="mostrarGrid" :items="transferencias" @incluir="onClickIncluir" @deletar="onClickDeletar" />
-      <Form :id_transferencia="id_transferencia" @inserted="onInserted" @updated="onUpdated" @reset="onResetForm"
-        v-else />
+    <v-card
+      elevation="2"
+      class="pa-4"
+    >
+      <Grid
+        v-if="mostrarGrid"
+        :items="transferencias"
+        @incluir="onClickIncluir"
+        @deletar="onClickDeletar"
+      />
+      <Form
+        :id_transferencia="id_transferencia"
+        @inserted="onInserted"
+        @updated="onUpdated"
+        @reset="onResetForm"
+        v-else
+      />
     </v-card>
   </div>
 </template>
@@ -90,7 +103,7 @@ export default {
       }
     },
     onInserted(transferencia) {
-      this.transferencias.push(transferencia);
+      this.transferencias.unshift(transferencia);
       this.onResetForm();
     },
     onUpdated(transferencia) {

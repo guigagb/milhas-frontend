@@ -1,14 +1,20 @@
 <template>
-  <div class="card-info d-flex align-center" :style="{'background':color, 'width':'100%'}">
+  <div
+    class="card-info d-flex align-center"
+    :style="{ 'background': color, 'width': '100%' }"
+  >
     <div class="widget-stat-icon">
-      <v-icon large color="#f2f2f2">mdi {{icon}}</v-icon>
+      <v-icon
+        large
+        color="#f2f2f2"
+      >mdi {{ icon }}</v-icon>
     </div>
     <div
       class="flex-grow-1 d-flex flex-column pa-2 pr-3 justify-content-start"
-      :style="{'height': '100%'}"
+      :style="{ 'height': '100%' }"
     >
-      <h4 class="mb-1 font-strong">{{title}}</h4>
-      <h2 class="font-strong text-center">{{valor}}</h2>
+      <h4 class="mb-1 font-strong">{{ title }}</h4>
+      <h2 class="font-strong text-center">{{ valor }}</h2>
     </div>
   </div>
 </template>
@@ -41,7 +47,7 @@ export default {
 <style lang="sass">
 .card-info
   position: relative
-  height: 100px
+  height: 80px
 
 .card-info, .card-info h2
   color: #f2f2f2
