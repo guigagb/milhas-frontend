@@ -1,6 +1,9 @@
 <template>
   <v-app>
-    <vertical-nav-menu :is-drawer-open.sync="isDrawerOpen"></vertical-nav-menu>
+    <vertical-nav-menu
+      :is-drawer-open.sync="isDrawerOpen"
+      @clickItemMenu="onClickItemMenu"
+    ></vertical-nav-menu>
 
     <v-app-bar
       app
@@ -84,7 +87,7 @@ export default {
   },
   data() {
     return {
-      isDrawerOpen: true,
+      isDrawerOpen: this.$vuetify.breakpoint.mdAndUp ? true : false,
       showModalAlterarSenha: false,
       icons: {
         mdiMagnify,
@@ -112,6 +115,12 @@ export default {
     },
     onClickAlterarSenha() {
       this.showModalAlterarSenha = true;
+    },
+    onClickItemMenu() {
+      console.log('aquii');
+      if (this.$vuetify.breakpoint.smAndDown) {
+        this.isDrawerOpen = false;
+      }
     },
     fecharModalAlterarSenha() {
       this.showModalAlterarSenha = false;

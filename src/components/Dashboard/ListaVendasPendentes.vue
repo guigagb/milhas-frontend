@@ -4,9 +4,14 @@
       Vendas Pendentes
     </v-card-title>
     <v-card-text class="card-lista-vendas__conteudo">
-      <v-data-table v-if="items.length" :items="items" :headers="headers" :options="{
-        itemsPerPage: 5
-      }">
+      <v-data-table
+        v-if="items.length"
+        :items="items"
+        :headers="headers"
+        :options="{
+          itemsPerPage: 5
+        }"
+      >
         <template #item.data_recebimento="{ item }">
           <span :class="{ 'card-lista-vendas__conteudo__item--red': expirado(item.data_recebimento) }">
             {{ item.data_recebimento | dataBR }}
@@ -23,7 +28,10 @@
           </span>
         </template>
       </v-data-table>
-      <h3 v-else class="card-lista-vendas__conteudo__vazio">
+      <h3
+        v-else
+        class="card-lista-vendas__conteudo__vazio"
+      >
         Nenhuma venda pendente
       </h3>
     </v-card-text>
@@ -64,7 +72,10 @@ export default {
 
 <style lang="scss" scoped>
 .card-lista-vendas {
-  height: 430px;
+  min-height: 430px;
+  max-height: 600px;
+
+  overflow-y: auto;
 
   &__conteudo {
     display: flex;

@@ -5,12 +5,20 @@
     </v-card-title>
     <v-divider class="mx-6"></v-divider>
     <v-card-text class="card-lista-movimentacoes__conteudo">
-      <v-data-table v-if="items.length" :items="items" :headers="headers" hide-default-header :options="{
-        itemsPerPage: 4
-      }">
+      <v-data-table
+        v-if="items.length"
+        :items="items"
+        :headers="headers"
+        hide-default-header
+        :options="{
+          itemsPerPage: 4
+        }"
+      >
         <template #item.descricao="{ item }">
-          <div class="card-lista-movimentacoes__conteudo__item"
-            :class="{ 'card-lista-movimentacoes__conteudo__item--red': expirado(item.data_credito) }">
+          <div
+            class="card-lista-movimentacoes__conteudo__item"
+            :class="{ 'card-lista-movimentacoes__conteudo__item--red': expirado(item.data_credito) }"
+          >
             <v-row class="card-lista-movimentacoes__conteudo__item__titulo">
               <v-col>
                 <strong>{{ item.data_credito | dataBR }}</strong>
@@ -28,7 +36,10 @@
           </div>
         </template>
       </v-data-table>
-      <h3 v-else class="card-lista-movimentacoes__conteudo__vazio">
+      <h3
+        v-else
+        class="card-lista-movimentacoes__conteudo__vazio"
+      >
         Nenhuma movimentação pendente
       </h3>
     </v-card-text>
@@ -67,7 +78,10 @@ export default {
 
 <style lang="scss" scoped>
 .card-lista-movimentacoes {
-  height: 430px;
+  min-height: 430px;
+  max-height: 600px;
+
+  overflow-y: auto;
 
   &__conteudo {
     display: flex;

@@ -4,14 +4,22 @@
       Saldos Disponíveis
     </v-card-title>
     <v-card-text class="card-lista-movimentacoes__conteudo">
-      <v-data-table v-if="items.length" :headers="headers" :items="items" :options="{
-        itemsPerPage: 5
-      }">
+      <v-data-table
+        v-if="items.length"
+        :headers="headers"
+        :items="items"
+        :options="{
+          itemsPerPage: 5
+        }"
+      >
         <template #item.nome_parceiro="{ item }">{{ item.nome_parceiro || item.nome_cartao }}</template>
         <template #item.total="{ item }">{{ item.total | integer }}</template>
         <template #item.custo_medio="{ item }">{{ item.custo_medio | money }}</template>
       </v-data-table>
-      <h3 v-else class="card-lista-saldos__conteudo__vazio">
+      <h3
+        v-else
+        class="card-lista-saldos__conteudo__vazio"
+      >
         Nenhum saldo disponível
       </h3>
     </v-card-text>
@@ -44,7 +52,10 @@ export default {
 
 <style lang="scss" scoped>
 .card-lista-saldos {
-  height: 430px;
+  min-height: 430px;
+  max-height: 600px;
+
+  overflow-y: auto;
 
   &__conteudo {
     display: flex;

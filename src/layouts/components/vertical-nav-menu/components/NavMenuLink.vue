@@ -1,14 +1,18 @@
 <template>
   <v-list-item
-    @click="openPage({pages, title})"
+    @click="onClickItemMenu"
     class="vertical-nav-menu-link"
-    :class="{'active': pageActive.name === rota}"
+    :class="{ 'active': pageActive.name === rota }"
     v-bind="$attrs"
     active-class="primary--text"
     exact
   >
     <v-list-item-icon>
-      <v-icon class="mx-auto" :color="colorIcon" :title="title">{{ icon || alternateIcon }}</v-icon>
+      <v-icon
+        class="mx-auto"
+        :color="colorIcon"
+        :title="title"
+      >{{ icon || alternateIcon }}</v-icon>
     </v-list-item-icon>
 
     <v-list-item-title>{{ title }}</v-list-item-title>
@@ -49,6 +53,10 @@ export default {
   },
   methods: {
     ...mapMutations("tabs", ["openPage"]),
+    onClickItemMenu() {
+      this.openPage({ pages: this.pages, title: this.title });
+      this.$emit('clickItemMenu');
+    }
   },
 };
 </script>

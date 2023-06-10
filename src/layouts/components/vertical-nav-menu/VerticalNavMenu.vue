@@ -1,101 +1,102 @@
 <template>
-  <v-navigation-drawer
-    :mini-variant="!isDrawerOpen"
-    :floating="!isDrawerOpen"
-    app
-    width="260"
-    class="app-navigation-menu"
-    permanent
-    @input="val => $emit('update:is-drawer-open', val)"
-  >
-    <!-- Navigation Header -->
-    <template
-      v-if="isDrawerOpen"
-      #prepend
+  <div>
+    <v-navigation-drawer
+      :mini-variant="!isDrawerOpen"
+      :floating="!isDrawerOpen"
+      app
+      width="260"
+      class="app-navigation-menu"
+      :permanent="$vuetify.breakpoint.mdAndUp"
+      :temporary="$vuetify.breakpoint.smAndDown"
+      :absolute="$vuetify.breakpoint.smAndDown"
+      :value="isDrawerOpen"
+      @input="val => $emit('update:is-drawer-open', val)"
     >
-      <div class="nav-info-estabelecimento">
-        <h2 class="nav-info-estabelecimento__titulo">.milhas</h2>
-      </div>
-
-      <div class="pesquisar">
-        <v-icon
-          size="20"
-          class="pesquisar_icone mx-2"
-        >mdi mdi-magnify</v-icon>
-        <input
-          v-model="textoPesquisar"
-          class="pesquisar_input"
-          type="text"
-          placeholder="Pesquisar"
-        />
-      </div>
-    </template>
-    <template
-      #prepend
-      v-else
-    >
-      <div class="d-flex align-center justify-center mt-4 mb-4">
-        <v-avatar
-          size="40"
-          color="primary"
-        >
-          <img
-            class="logo"
-            src="@/assets/logo-branca.svg"
-          />
-        </v-avatar>
-      </div>
-    </template>
-
-    <!-- Navigation Items -->
-    <v-list
-      expand
-      shaped
-      class="vertical-nav-menu-items pr-5"
-    >
-      <div
-        v-for="item in filteredMenu"
-        :key="item.nome"
+      <!-- Navigation Header -->
+      <template
+        v-if="isDrawerOpen"
+        #prepend
       >
-        <NavMenuSectionTitle
-          v-if="item.itens && item.itens.length > 0 && isDrawerOpen == true"
-          :title="item.nome"
-        ></NavMenuSectionTitle>
-        <NavMenuLink
-          v-if="!item.itens || item.itens.length == 0"
-          :title="item.nome"
-          :icon="item.icone"
-          :rota="item.rota"
-        ></NavMenuLink>
-        <div
-          v-for="subItem in item.itens"
-          :key="subItem.nome"
-        >
-          <NavMenuLink
-            :title="subItem.nome"
-            :icon="subItem.icone"
-            :rota="subItem.rota"
-          ></NavMenuLink>
+        <div class="nav-info-estabelecimento">
+          <h2 class="nav-info-estabelecimento__titulo">.milhas</h2>
         </div>
-      </div>
-    </v-list>
 
-    <template v-slot:append>
-      <div class="pa-4 d-flex flex-column align-center justify-center">
-        <!-- <v-img
-          :src="require('@/assets/prootica.png')"
-          max-height="25px"
-          :max-width="isDrawerOpen ? '130px' : '40px'"
-          alt="logo"
-          contain
-        ></v-img>-->
-        <span
-          v-if="isDrawerOpen"
-          class="caption"
-        >versão: 1.0.0.1.0.1</span>
-      </div>
-    </template>
-  </v-navigation-drawer>
+        <div class="pesquisar">
+          <v-icon
+            size="20"
+            class="pesquisar_icone mx-2"
+          >mdi mdi-magnify</v-icon>
+          <input
+            v-model="textoPesquisar"
+            class="pesquisar_input"
+            type="text"
+            placeholder="Pesquisar"
+          />
+        </div>
+      </template>
+      <template
+        #prepend
+        v-else
+      >
+        <div class="d-flex align-center justify-center mt-4 mb-4">
+          <v-avatar
+            size="40"
+            color="primary"
+          >
+            <img
+              class="logo"
+              src="@/assets/logo-branca.svg"
+            />
+          </v-avatar>
+        </div>
+      </template>
+
+      <!-- Navigation Items -->
+      <v-list
+        expand
+        shaped
+        class="vertical-nav-menu-items pr-5"
+      >
+        <div
+          v-for="item in filteredMenu"
+          :key="item.nome"
+        >
+          <NavMenuSectionTitle
+            v-if="item.itens && item.itens.length > 0 && isDrawerOpen == true"
+            :title="item.nome"
+          ></NavMenuSectionTitle>
+          <NavMenuLink
+            v-if="!item.itens || item.itens.length == 0"
+            :title="item.nome"
+            :icon="item.icone"
+            :rota="item.rota"
+            @clickItemMenu="onClickItemMenu"
+          ></NavMenuLink>
+          <div
+            v-for="subItem in item.itens"
+            :key="subItem.nome"
+          >
+            <NavMenuLink
+              :title="subItem.nome"
+              :icon="subItem.icone"
+              :rota="subItem.rota"
+              @clickItemMenu="onClickItemMenu"
+            ></NavMenuLink>
+          </div>
+        </div>
+      </v-list>
+
+      <template v-slot:append>
+        <div class="pa-4 d-flex flex-column align-center justify-center">
+          <span
+            v-if="isDrawerOpen"
+            class="caption"
+          >versão: 1.0.0.1.0.1</span>
+        </div>
+      </template>
+    </v-navigation-drawer>
+
+  </div>
 </template>
 
 <script>
@@ -191,6 +192,9 @@ export default {
 
       return menu;
     },
+    onClickItemMenu() {
+      this.$emit('clickItemMenu');
+    }
   },
 };
 </script>

@@ -1,20 +1,26 @@
 <template>
-  <div class="tab-container">
+  <div
+    v-if="$vuetify.breakpoint.mdAndUp"
+    class="tab-container"
+  >
     <div
-      @click="openPage({pages, title})"
+      @click="openPage({ pages, title })"
       :class="[pageActive.meta.title == page.meta.title ? 'tab active' : 'tab']"
     >
-      <div class="flex" style="align-items: center: padding: 7px 0">
+      <div
+        class="flex"
+        style="align-items: center: padding: 7px 0"
+      >
         <v-icon
           color="#f2f2f2"
           size="12"
           class="ml-1"
-          :class="{'tab__icon--inative': !active}"
-        >{{page.meta.icon}}</v-icon>
-        <label :class="{'tab__text--inative': !active}">{{page.meta.title}}</label>
+          :class="{ 'tab__icon--inative': !active }"
+        >{{ page.meta.icon }}</v-icon>
+        <label :class="{ 'tab__text--inative': !active }">{{ page.meta.title }}</label>
       </div>
       <v-btn
-        @click.prevent.stop="closePage({pages, title})"
+        @click.prevent.stop="closePage({ pages, title })"
         fab
         x-small
         elevation="0"
@@ -97,5 +103,4 @@ export default {
       margin: 0 4px;
     }
   }
-}
-</style>
+}</style>
