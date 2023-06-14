@@ -1,65 +1,207 @@
 <template>
-  <v-form id="formVenda" class="pa-4 full-width">
+  <v-form
+    id="formVenda"
+    class="pa-4 full-width"
+  >
     <v-row>
-      <v-col md="2" cols="12">
-        <input hidden v-model="form.id_venda" />
-        <v-text-field label="Data venda" v-model="form.data_venda" class="obr" hide-details outlined dense type="date"
-          ref="edtDataVencimento" :disabled="desabilitarCampo"></v-text-field>
+      <v-col
+        md="2"
+        cols="12"
+      >
+        <input
+          hidden
+          v-model="form.id_venda"
+        />
+        <v-text-field
+          label="Data venda"
+          v-model="form.data_venda"
+          class="obr"
+          hide-details
+          outlined
+          dense
+          type="date"
+          ref="edtDataVencimento"
+          :disabled="desabilitarCampo"
+        ></v-text-field>
       </v-col>
-      <v-col md="4" cols="12">
-        <v-autocomplete :items="ciasAereas" v-model="form.id_parceiro" item-text="nome" item-value="id_parceiro"
-          label="Parceiro" dense outlined hide-details :disabled="desabilitarCampo"></v-autocomplete>
+      <v-col
+        md="4"
+        cols="12"
+      >
+        <v-autocomplete
+          :items="ciasAereas"
+          v-model="form.id_parceiro"
+          item-text="nome"
+          item-value="id"
+          label="Parceiro"
+          dense
+          outlined
+          hide-details
+          :disabled="desabilitarCampo"
+        ></v-autocomplete>
       </v-col>
-      <v-col md="4" cols="12">
-        <v-autocomplete :items="plataformasVendas" v-model="form.id_plataforma_venda" item-text="nome"
-          item-value="id_plataforma_venda" label="Plataforma Venda" dense outlined hide-details></v-autocomplete>
+      <v-col
+        md="4"
+        cols="12"
+      >
+        <v-autocomplete
+          :items="plataformasVendas"
+          v-model="form.id_plataforma_venda"
+          item-text="nome"
+          item-value="id_plataforma_venda"
+          label="Plataforma Venda"
+          dense
+          outlined
+          hide-details
+        ></v-autocomplete>
       </v-col>
-      <v-col md="2" cols="12">
-        <vuetify-money label="Milhas disponíveis" :value="saldoDisponivel" class="obr" hide-details outlined dense
-          disabled :options="{
+      <v-col
+        md="2"
+        cols="12"
+      >
+        <vuetify-money
+          label="Milhas disponíveis"
+          :value="saldoDisponivel"
+          class="obr"
+          hide-details
+          outlined
+          dense
+          disabled
+          :options="{
             locale: 'pt-BR',
             precision: 0,
-          }"></vuetify-money>
+          }"
+        ></vuetify-money>
       </v-col>
-      <v-col md="2" cols="12">
-        <vuetify-money label="Qtd. Milhas" v-model="form.qtd_milhas" class="obr" hide-details outlined dense
-          :disabled="desabilitarCampo" :options="{
+      <v-col
+        md="2"
+        cols="12"
+      >
+        <vuetify-money
+          label="Qtd. Milhas"
+          v-model="form.qtd_milhas"
+          class="obr"
+          hide-details
+          outlined
+          dense
+          :disabled="desabilitarCampo"
+          :options="{
             locale: 'pt-BR',
             precision: 0,
-          }"></vuetify-money>
+          }"
+        ></vuetify-money>
       </v-col>
-      <v-col md="2" cols="12">
-        <vuetify-money class="obr" label="Valor" v-model="form.valor" hide-details outlined dense></vuetify-money>
+      <v-col
+        md="2"
+        cols="12"
+      >
+        <vuetify-money
+          class="obr"
+          label="Valor"
+          v-model="form.valor"
+          hide-details
+          outlined
+          dense
+        ></vuetify-money>
       </v-col>
-      <v-col md="2" cols="12">
-        <vuetify-money class="obr" disabled label="Valor Milheiro" :value="valorMilheiro" hide-details outlined
-          dense></vuetify-money>
+      <v-col
+        md="2"
+        cols="12"
+      >
+        <vuetify-money
+          class="obr"
+          disabled
+          label="Valor Milheiro"
+          :value="valorMilheiro"
+          hide-details
+          outlined
+          dense
+        ></vuetify-money>
       </v-col>
-      <v-col md="2" cols="12">
-        <vuetify-money class="obr" disabled label="Custo Médio Milheiro" :value="custoMilheiro" hide-details outlined
-          dense></vuetify-money>
+      <v-col
+        md="2"
+        cols="12"
+      >
+        <vuetify-money
+          class="obr"
+          disabled
+          label="Custo Médio Milheiro"
+          :value="custoMilheiro"
+          hide-details
+          outlined
+          dense
+        ></vuetify-money>
       </v-col>
-      <v-col md="2" cols="12">
-        <vuetify-money class="obr" disabled label="Lucro líquido" :value="lucroLiquido" hide-details outlined
-          dense></vuetify-money>
+      <v-col
+        md="2"
+        cols="12"
+      >
+        <vuetify-money
+          class="obr"
+          disabled
+          label="Lucro líquido"
+          :value="lucroLiquido"
+          hide-details
+          outlined
+          dense
+        ></vuetify-money>
       </v-col>
-      <v-col md="2" cols="12">
-        <v-text-field label="Qtd. CPF's" v-model="form.qtd_cpf" class="obr" hide-details outlined dense
-          type="number"></v-text-field>
+      <v-col
+        md="2"
+        cols="12"
+      >
+        <v-text-field
+          label="Qtd. CPF's"
+          v-model="form.qtd_cpf"
+          class="obr"
+          hide-details
+          outlined
+          dense
+          type="number"
+        ></v-text-field>
       </v-col>
-      <v-col md="2" cols="12">
-        <v-text-field label="Data recebimento" v-model="form.data_recebimento" class="obr" hide-details outlined dense
-          type="date" ref="edtDataRecebimento"></v-text-field>
+      <v-col
+        md="2"
+        cols="12"
+      >
+        <v-text-field
+          label="Data recebimento"
+          v-model="form.data_recebimento"
+          class="obr"
+          hide-details
+          outlined
+          dense
+          type="date"
+          ref="edtDataRecebimento"
+        ></v-text-field>
       </v-col>
-      <v-col md="2" cols="12">
-        <v-autocomplete :items="itensSimNao" v-model="form.recebido" label="Recebido" dense outlined hide-details
-          class="obr"></v-autocomplete>
+      <v-col
+        md="2"
+        cols="12"
+      >
+        <v-autocomplete
+          :items="itensSimNao"
+          v-model="form.recebido"
+          label="Recebido"
+          dense
+          outlined
+          hide-details
+          class="obr"
+        ></v-autocomplete>
       </v-col>
     </v-row>
     <v-row class="mt-8">
       <v-spacer></v-spacer>
-      <v-btn @click="onClickCancelar" color="primary" outlined class="mr-2">Cancelar</v-btn>
-      <v-btn @click="onClickSalvar" color="primary">Salvar</v-btn>
+      <v-btn
+        @click="onClickCancelar"
+        color="primary"
+        outlined
+        class="mr-2"
+      >Cancelar</v-btn>
+      <v-btn
+        @click="onClickSalvar"
+        color="primary"
+      >Salvar</v-btn>
     </v-row>
   </v-form>
 </template>
@@ -137,8 +279,7 @@ export default {
 
     parceiro() {
       if (!this.form.id_parceiro) return null;
-
-      return this.parceiros.find((parceiro) => parceiro.id_parceiro === this.form.id_parceiro);
+      return this.parceiros.find((parceiro) => parceiro.id === this.form.id_parceiro && parceiro.is_cia_aerea === 'S');
     },
 
     plataformaVenda() {
@@ -262,7 +403,7 @@ export default {
       const parceiro = this.parceiros.find((parceiro) => parceiro.id_parceiro === id_parceiro);
 
       if (!this.isEdicao) {
-        this.custoMilheiro = parceiro?.custo_medio_total;
+        this.custoMilheiro = parceiro?.custo_medio_total ?? 0;
       }
     },
   },

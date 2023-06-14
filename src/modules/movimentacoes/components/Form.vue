@@ -1,53 +1,175 @@
 <template>
-  <v-form id="formMovimentacao" class="pa-4 full-width">
+  <v-form
+    id="formMovimentacao"
+    class="pa-4 full-width"
+  >
     <v-row>
-      <v-col md="2" cols="12">
-        <input hidden v-model="form.id_movimentacao" />
-        <v-text-field label="Data" v-model="form.data" class="obr" hide-details outlined dense type="date"
-          ref="edtData"></v-text-field>
+      <v-col
+        md="2"
+        cols="12"
+      >
+        <input
+          hidden
+          v-model="form.id_movimentacao"
+        />
+        <v-text-field
+          label="Data"
+          v-model="form.data"
+          class="obr"
+          hide-details
+          outlined
+          dense
+          type="date"
+          ref="edtData"
+        ></v-text-field>
       </v-col>
-      <v-col md="6" cols="12">
-        <v-text-field label="Descrição" v-model="form.descricao" class="obr" hide-details outlined dense
-          maxlength="120"></v-text-field>
+      <v-col
+        md="6"
+        cols="12"
+      >
+        <v-text-field
+          label="Descrição"
+          v-model="form.descricao"
+          class="obr"
+          hide-details
+          outlined
+          dense
+          maxlength="120"
+        ></v-text-field>
       </v-col>
-      <v-col md="2" cols="12">
-        <vuetify-money label="Pontos" v-model="form.pontos" class="obr" hide-details outlined dense :options="{
-          locale: 'pt-BR',
-          precision: 0,
-        }"></vuetify-money>
+      <v-col
+        md="2"
+        cols="12"
+      >
+        <vuetify-money
+          label="Pontos"
+          v-model="form.pontos"
+          class="obr"
+          hide-details
+          outlined
+          dense
+          :options="{
+            locale: 'pt-BR',
+            precision: 0,
+          }"
+        ></vuetify-money>
       </v-col>
-      <v-col md="2" cols="12">
-        <vuetify-money label="Custo" v-model="form.custo" hide-details outlined dense></vuetify-money>
+      <v-col
+        md="2"
+        cols="12"
+      >
+        <vuetify-money
+          label="Custo"
+          v-model="form.custo"
+          hide-details
+          outlined
+          dense
+        ></vuetify-money>
       </v-col>
-      <v-col md="4" cols="12">
-        <v-autocomplete :items="lojas" v-model="form.id_loja" item-text="nome" item-value="id_loja" label="Loja" dense
-          outlined hide-details clearable></v-autocomplete>
+      <v-col
+        md="4"
+        cols="12"
+      >
+        <v-autocomplete
+          :items="lojas"
+          v-model="form.id_loja"
+          item-text="nome"
+          item-value="id_loja"
+          label="Loja"
+          dense
+          outlined
+          hide-details
+          clearable
+        ></v-autocomplete>
       </v-col>
-      <v-col md="4" cols="12">
-        <v-autocomplete :items="parceiros" v-model="form.id_parceiro" item-text="nome" item-value="id_parceiro"
-          label="Parceiro" dense outlined hide-details clearable></v-autocomplete>
+      <v-col
+        md="4"
+        cols="12"
+      >
+        <v-autocomplete
+          :items="parceiros"
+          v-model="form.id_parceiro"
+          item-text="nome"
+          item-value="id_parceiro"
+          label="Parceiro"
+          dense
+          outlined
+          hide-details
+          clearable
+        ></v-autocomplete>
       </v-col>
-      <v-col md="4" cols="12">
-        <v-autocomplete :items="cartoes" v-model="form.id_cartao" item-text="nome" item-value="id_cartao" label="Cartão"
-          dense outlined hide-details clearable></v-autocomplete>
+      <v-col
+        md="4"
+        cols="12"
+      >
+        <v-autocomplete
+          :items="cartoes"
+          v-model="form.id_cartao"
+          item-text="nome"
+          item-value="id_cartao"
+          label="Cartão"
+          dense
+          outlined
+          hide-details
+          clearable
+        ></v-autocomplete>
       </v-col>
-      <v-col md="2" cols="12">
-        <v-text-field label="Dias Crédito" v-model="form.dias_credito" class="obr" hide-details outlined dense
-          type="number"></v-text-field>
+      <v-col
+        md="2"
+        cols="12"
+      >
+        <v-text-field
+          label="Dias Crédito"
+          v-model="form.dias_credito"
+          class="obr"
+          hide-details
+          outlined
+          dense
+          type="number"
+        ></v-text-field>
       </v-col>
-      <v-col md="2" cols="12">
-        <v-autocomplete :items="itensSimNao" v-model="form.creditado" label="Creditado" dense outlined hide-details
-          class="obr"></v-autocomplete>
+      <v-col
+        md="2"
+        cols="12"
+      >
+        <v-autocomplete
+          :items="itensSimNao"
+          v-model="form.creditado"
+          label="Creditado"
+          dense
+          outlined
+          hide-details
+          class="obr"
+        ></v-autocomplete>
       </v-col>
-      <v-col md="2" cols="12">
-        <v-autocomplete :items="itensEntradaSaida" v-model="form.tipo_entrada" @change="onChangeTipoMovimentacao"
-          label="Tipo de Movimentação" dense outlined hide-details class="obr"></v-autocomplete>
+      <v-col
+        md="2"
+        cols="12"
+      >
+        <v-autocomplete
+          :items="itensEntradaSaida"
+          v-model="form.tipo_entrada"
+          @change="onChangeTipoMovimentacao"
+          label="Tipo de Movimentação"
+          dense
+          outlined
+          hide-details
+          class="obr"
+        ></v-autocomplete>
       </v-col>
     </v-row>
     <v-row class="mt-4">
       <v-spacer></v-spacer>
-      <v-btn @click="onClickCancelar" color="primary" outlined class="mr-2">Cancelar</v-btn>
-      <v-btn @click="onClickSalvar" color="primary">Salvar</v-btn>
+      <v-btn
+        @click="onClickCancelar"
+        color="primary"
+        outlined
+        class="mr-2"
+      >Cancelar</v-btn>
+      <v-btn
+        @click="onClickSalvar"
+        color="primary"
+      >Salvar</v-btn>
     </v-row>
   </v-form>
 </template>
@@ -181,11 +303,10 @@ export default {
       try {
         this.$store.commit("setLoading", true);
         const form = sanitizarDadosForm(this.form);
-        const { id_movimentacao, movimentacao } = await service.insertMovimentacao(form);
+        const movimentacao = await service.insertMovimentacao(form);
         const item = {
           ...form,
-          id_movimentacao,
-          movimentacao,
+          ...movimentacao,
         };
         this.$emit("inserted", item);
       } catch (error) {
@@ -199,11 +320,11 @@ export default {
       try {
         this.$store.commit("setLoading", true);
         const form = sanitizarDadosForm(this.form);
-        const { movimentacao } = await service.updateMovimentacao(this.id_movimentacao, form);
+        const movimentacao = await service.updateMovimentacao(this.id_movimentacao, form);
         const item = {
           ...this.form,
           id_movimentacao: this.id_movimentacao,
-          movimentacao,
+          ...movimentacao,
         };
 
         this.$emit("updated", item);

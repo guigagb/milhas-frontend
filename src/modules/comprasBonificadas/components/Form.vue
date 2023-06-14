@@ -1,54 +1,175 @@
 <template>
-  <v-form id="formCompraBonificada" class="pa-4 full-width">
+  <v-form
+    id="formCompraBonificada"
+    class="pa-4 full-width"
+  >
     <v-row>
-      <v-col md="2" cols="12">
-        <input hidden v-model="form.id_compra_bonificada" />
-        <v-text-field label="Data" v-model="form.data" class="obr" hide-details outlined dense type="date"
-          ref="edtData"></v-text-field>
+      <v-col
+        md="2"
+        cols="12"
+      >
+        <input
+          hidden
+          v-model="form.id_compra_bonificada"
+        />
+        <v-text-field
+          label="Data"
+          v-model="form.data"
+          class="obr"
+          hide-details
+          outlined
+          dense
+          type="date"
+          ref="edtData"
+        ></v-text-field>
       </v-col>
-      <v-col md="6" cols="12">
-        <input hidden v-model="form.id_compra_bonificada" />
-        <v-text-field label="Produto" v-model="form.produto" class="obr" hide-details outlined dense
-          maxlength="120"></v-text-field>
+      <v-col
+        md="6"
+        cols="12"
+      >
+        <input
+          hidden
+          v-model="form.id_compra_bonificada"
+        />
+        <v-text-field
+          label="Produto"
+          v-model="form.produto"
+          class="obr"
+          hide-details
+          outlined
+          dense
+          maxlength="120"
+        ></v-text-field>
       </v-col>
-      <v-col md="2" cols="12">
-        <vuetify-money label="Valor" v-model="form.valor" class="obr" hide-details outlined dense></vuetify-money>
+      <v-col
+        md="2"
+        cols="12"
+      >
+        <vuetify-money
+          label="Valor"
+          v-model="form.valor"
+          class="obr"
+          hide-details
+          outlined
+          dense
+        ></vuetify-money>
       </v-col>
-      <v-col md="2" cols="12">
-        <vuetify-money label="Custo" v-model="form.custo" hide-details outlined dense></vuetify-money>
+      <v-col
+        md="2"
+        cols="12"
+      >
+        <vuetify-money
+          label="Custo"
+          v-model="form.custo"
+          hide-details
+          outlined
+          dense
+        ></vuetify-money>
       </v-col>
-      <v-col md="6" cols="12">
-        <v-autocomplete :items="lojas" v-model="form.id_loja" item-text="nome" item-value="id_loja" label="Loja" dense
-          outlined hide-details class="obr"></v-autocomplete>
+      <v-col
+        md="6"
+        cols="12"
+      >
+        <v-autocomplete
+          :items="lojas"
+          v-model="form.id_loja"
+          item-text="nome"
+          item-value="id_loja"
+          label="Loja"
+          dense
+          outlined
+          hide-details
+          class="obr"
+        ></v-autocomplete>
       </v-col>
-      <v-col md="6" cols="12">
-        <v-autocomplete :items="parceiros" v-model="form.id_parceiro" item-text="nome" item-value="id_parceiro"
-          label="Parceiros" dense outlined hide-details class="obr"></v-autocomplete>
+      <v-col
+        md="6"
+        cols="12"
+      >
+        <v-autocomplete
+          :items="parceiros"
+          v-model="form.id_parceiro"
+          item-text="nome"
+          item-value="id_parceiro"
+          label="Parceiros"
+          dense
+          outlined
+          hide-details
+          class="obr"
+        ></v-autocomplete>
       </v-col>
-      <v-col md="2" cols="12">
-        <v-select :items="itensMoedas" v-model="form.id_moeda" label="Moeda" dense outlined hide-details
-          class="obr"></v-select>
+      <v-col
+        md="2"
+        cols="12"
+      >
+        <v-select
+          :items="itensMoedas"
+          v-model="form.id_moeda"
+          label="Moeda"
+          dense
+          outlined
+          hide-details
+          class="obr"
+        ></v-select>
       </v-col>
-      <v-col md="2" cols="12">
-        <vuetify-money :label="labelPontuacao" v-model="form.fator_pontos" class="obr" hide-details outlined dense
+      <v-col
+        md="2"
+        cols="12"
+      >
+        <vuetify-money
+          :label="labelPontuacao"
+          v-model="form.fator_pontos"
+          class="obr"
+          hide-details
+          outlined
+          dense
           :options="{
             locale: 'pt-BR',
             precision: 0,
-          }"></vuetify-money>
+          }"
+        ></vuetify-money>
       </v-col>
-      <v-col md="2" cols="12">
-        <v-text-field label="Total pontos" :value="totalPontos" hide-details outlined dense type="number"
-          disabled></v-text-field>
+      <v-col
+        md="2"
+        cols="12"
+      >
+        <v-text-field
+          label="Total pontos"
+          :value="totalPontos"
+          hide-details
+          outlined
+          dense
+          type="number"
+          disabled
+        ></v-text-field>
       </v-col>
-      <v-col md="2" cols="12">
-        <v-text-field label="Dias Crédito" v-model="form.dias_credito" class="obr" hide-details outlined dense
-          type="number"></v-text-field>
+      <v-col
+        md="2"
+        cols="12"
+      >
+        <v-text-field
+          label="Dias Crédito"
+          v-model="form.dias_credito"
+          class="obr"
+          hide-details
+          outlined
+          dense
+          type="number"
+        ></v-text-field>
       </v-col>
     </v-row>
     <v-row class="mt-4">
       <v-spacer></v-spacer>
-      <v-btn @click="onClickCancelar" color="primary" outlined class="mr-2">Cancelar</v-btn>
-      <v-btn @click="onClickSalvar" color="primary">Salvar</v-btn>
+      <v-btn
+        @click="onClickCancelar"
+        color="primary"
+        outlined
+        class="mr-2"
+      >Cancelar</v-btn>
+      <v-btn
+        @click="onClickSalvar"
+        color="primary"
+      >Salvar</v-btn>
     </v-row>
   </v-form>
 </template>

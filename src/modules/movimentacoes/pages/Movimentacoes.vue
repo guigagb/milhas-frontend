@@ -1,11 +1,29 @@
 <template>
   <div>
     <h2 class="pb-4">Movimentações</h2>
-    <v-card elevation="2" class="pa-4">
-      <Grid v-if="mostrarGrid" :items="movimentacoes" :loading="loading" :page="page" :qtdPages="qtdPages"
-        @incluir="onClickIncluir" @alterar="onClickAlterar" @creditar="onClickCreditar" @deletar="onClickDeletar"
-        @updatePage="updatePage" />
-      <Form :id_movimentacao="id_movimentacao" @inserted="onInserted" @updated="onUpdated" @reset="onResetForm" v-else />
+    <v-card
+      elevation="2"
+      class="pa-4"
+    >
+      <Grid
+        v-if="mostrarGrid"
+        :items="movimentacoes"
+        :loading="loading"
+        :page="page"
+        :qtdPages="qtdPages"
+        @incluir="onClickIncluir"
+        @alterar="onClickAlterar"
+        @creditar="onClickCreditar"
+        @deletar="onClickDeletar"
+        @updatePage="updatePage"
+      />
+      <Form
+        :id_movimentacao="id_movimentacao"
+        @inserted="onInserted"
+        @updated="onUpdated"
+        @reset="onResetForm"
+        v-else
+      />
     </v-card>
   </div>
 </template>
